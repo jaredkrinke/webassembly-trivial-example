@@ -4,7 +4,8 @@
 
         <script>
             (async () => {
-                const module = await WebAssembly.instantiateStreaming(fetch("./add.wasm"));
+                const buffer = await (await fetch("./add.wasm")).arrayBuffer();
+                const module = await WebAssembly.instantiate(buffer);
                 const add = module.instance.exports.add;
                 document.getElementById("result").innerText = add(2, 2);
             })();
