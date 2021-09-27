@@ -1,0 +1,13 @@
+{
+  "name": "wasm-trivial-example",
+  "description": "Trivial example of building and using WebAssembly module using Clang/LLVM",
+  "main": "add.js",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^13.0.2"
+  },
+  "scripts": {
+    "build": "clang -target wasm32 -Os -nostdlib -Wl,--no-entry add.c -o add.wasm",
+    "serve": "npx http-server ."
+  }
+}
