@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <p>The value of 2 + 2 is <span id="result">?</span></p>
+
+        <script>
+            (async () => {
+                const buffer = await (await fetch("./add.wasm")).arrayBuffer();
+                const module = await WebAssembly.instantiate(buffer);
+                const add = module.instance.exports.add;
+                document.getElementById("result").innerText = add(2, 2);
+            })();
+        </script>
+    </body>
+</html>
